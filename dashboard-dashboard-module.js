@@ -516,6 +516,7 @@ var CommonService = /** @class */ (function () {
     }
     CommonService.prototype.sidebarToggle = function () {
         this.sidebarToggleValue = !this.sidebarToggleValue;
+        console.log("ádnkasdnsajknb");
     };
     CommonService.prototype.sidebarMiniToggle = function () {
         this.sidebarMiniToggleValue = !this.sidebarMiniToggleValue;
@@ -862,12 +863,20 @@ var DashboardComponent = /** @class */ (function () {
         this.router = router;
         this.cs = cs;
         this.renderer = renderer;
+        this.isLogginAdmin = false;
         this.commonService = cs;
         nprogress__WEBPACK_IMPORTED_MODULE_3__["configure"]({ showSpinner: false });
         this.renderer.addClass(document.body, 'preload');
     }
     DashboardComponent.prototype.ngOnInit = function () {
         var _this = this;
+        if (sessionStorage.getItem('cl-isLoggedin')) {
+            this.isLogginAdmin = true;
+            this.userNameAdmin = sessionStorage.getItem('cl-userNameAdmin');
+        }
+        else {
+            this.isLogginAdmin = false;
+        }
         this.router.events.subscribe(function (obj) {
             if (obj instanceof _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouteConfigLoadStart"]) {
                 nprogress__WEBPACK_IMPORTED_MODULE_3__["start"]();
@@ -1029,7 +1038,7 @@ var FooterComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navigation-bar\"  [class.hidden]=\"commonService.navbarToggleValue\" [class.sidebar-hidden]=\"commonService.sidebarToggleValue\">\r\n  <div class=\"nav-toggle-btn\" [class.open]=\"!commonService.sidebarToggleValue\" (click)=\"commonService.sidebarToggle()\">\r\n    <span *ngFor=\"let number of [0,1,2]\"></span>\r\n  </div>\r\n  <div class=\"navbar-brand\">\r\n    <a>\r\n        <!-- <img class=\"brandImg\" src=\"http://via.placeholder.com/60x60\" alt=\"brandImg\"> -->\r\n      ANGULAR ADMIN\r\n    </a>\r\n  </div>\r\n  \r\n  <ul class=\"left-ul\">\r\n    <li>\r\n      <button id=\"minimizeSidebar\" class=\"btn btn-just-icon btn-round btn-light\" (click)=\"commonService.sidebarMiniToggle()\">\r\n        <i *ngIf=\"!commonService.sidebarMiniToggleValue\" class=\"material-icons sd-visible\">more_vert</i>\r\n        <i *ngIf=\"commonService.sidebarMiniToggleValue\" class=\"material-icons sdm-visible\">view_list</i>\r\n      </button>\r\n    </li>\r\n    <li class=\"nav-item\">Dashboard</li>\r\n  </ul>\r\n  <ul class=\"right-ul\">\r\n    <li>\r\n      <form class=\"form-inline\">\r\n        <input class=\"form-control mr-sm-2 no-border\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\r\n        <button class=\"btn  btn-just-icon btn-round btn-light\" type=\"submit\"><i class=\"material-icons\">search</i></button>\r\n      </form>\r\n    </li>\r\n    <li class=\"nav-item\"><i class=\"material-icons\">notifications</i></li>\r\n    <li class=\"nav-item\"><i class=\"material-icons\">person</i></li>\r\n  </ul>\r\n</nav>"
+module.exports = "<nav class=\"navbar navigation-bar\" [class.hidden]=\"commonService.navbarToggleValue\" [class.sidebar-hidden]=\"commonService.sidebarToggleValue\">\r\n  <div class=\"nav-toggle-btn\" [class.open]=\"!commonService.sidebarToggleValue\" (click)=\"commonService.sidebarToggle()\">\r\n    <span *ngFor=\"let number of [0,1,2]\"></span>\r\n  </div>\r\n  <div class=\"navbar-brand\">\r\n    <a>\r\n      <!-- <img class=\"brandImg\" src=\"http://via.placeholder.com/60x60\" alt=\"brandImg\"> -->\r\n      ANGULAR ADMIN\r\n    </a>\r\n  </div>\r\n\r\n  <ul class=\"left-ul\">\r\n    <li>\r\n      <button id=\"minimizeSidebar\" class=\"btn btn-just-icon btn-round btn-light\" (click)=\"commonService.sidebarMiniToggle()\">\r\n        <i *ngIf=\"!commonService.sidebarMiniToggleValue\" class=\"material-icons sd-visible\">more_vert</i>\r\n        <i *ngIf=\"commonService.sidebarMiniToggleValue\" class=\"material-icons sdm-visible\">view_list</i>\r\n      </button>\r\n    </li>\r\n    <li class=\"nav-item\">Dashboard</li>\r\n  </ul>\r\n  <ul class=\"right-ul\">\r\n    <li>\r\n      <form class=\"form-inline\">\r\n        <input class=\"form-control mr-sm-2 no-border\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\r\n        <button class=\"btn  btn-just-icon btn-round btn-light\" type=\"submit\">\r\n          <i class=\"material-icons\">search</i>\r\n        </button>\r\n      </form>\r\n    </li>\r\n    <li class=\"nav-item\">\r\n      <i class=\"material-icons\">notifications</i>\r\n    </li>\r\n    <li class=\"nav-item\">\r\n      <i class=\"material-icons\">person</i>\r\n    </li>\r\n    <li>\r\n      <a routerLink=\"/home\"><i class=\"material-icons\">add_shopping_cart</i></a>\r\n    </li>\r\n  </ul>\r\n</nav>"
 
 /***/ }),
 
@@ -1040,7 +1049,7 @@ module.exports = "<nav class=\"navbar navigation-bar\"  [class.hidden]=\"commonS
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/**** fonts ****/\n/**** colcor ****/\n/**** z-index ******/\n/**** navbar ****/\n/**** sidebar ****/\n/** other **/\n/***** custom scrollbar webkit browser (not supported in firefox) ****/\n/** hover bg color **/\n.navigation-bar {\n  position: fixed;\n  top: 0;\n  right: 0;\n  padding: 0 1rem;\n  z-index: 1009;\n  height: 50px;\n  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);\n  background-color: #fff; }\n.navigation-bar.hidden {\n    top: -50px; }\n.navigation-bar ul {\n    display: flex;\n    margin: 0;\n    padding: 0;\n    align-items: center; }\n.navigation-bar ul li {\n      display: flex;\n      padding: 0.5em; }\n.navigation-bar .navbar-brand {\n    display: none;\n    text-align: center; }\n/* navbar burger button */\n.nav-toggle-btn {\n  display: none;\n  width: 2.2rem;\n  padding: 1rem 0;\n  position: absolute; }\n.nav-toggle-btn span {\n    width: 100%;\n    height: 2px;\n    position: absolute;\n    background: #000;\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n    transition: .25s ease-in-out; }\n.nav-toggle-btn span:nth-child(1) {\n      top: 5px;\n      -webkit-transform-origin: left center;\n              transform-origin: left center; }\n.nav-toggle-btn span:nth-child(2) {\n      top: 15px;\n      -webkit-transform-origin: left center;\n              transform-origin: left center; }\n.nav-toggle-btn span:nth-child(3) {\n      top: 25px;\n      -webkit-transform-origin: left center;\n              transform-origin: left center; }\n/* navbar burger button animation*/\n.nav-toggle-btn.open span:nth-child(1) {\n  -webkit-transform: rotate(45deg);\n          transform: rotate(45deg);\n  top: 2px;\n  left: 4px; }\n.nav-toggle-btn.open span:nth-child(2) {\n  width: 0%;\n  opacity: 0; }\n.nav-toggle-btn.open span:nth-child(3) {\n  -webkit-transform: rotate(-45deg);\n          transform: rotate(-45deg);\n  top: 27px;\n  left: 4px; }\n@media (max-width: 1199.98px) {\n  .navigation-bar {\n    left: 220px; } }\n@media (max-width: 991.98px) {\n  #minimizeSidebar {\n    display: none; }\n  .nav-toggle-btn {\n    display: inline-block; }\n  .navigation-bar {\n    left: 62px; }\n    .navigation-bar:not(.sidebar-hidden) {\n      left: 0; }\n    .navigation-bar ul.left-ul {\n      display: none; }\n    .navigation-bar .navbar-brand {\n      display: block;\n      width: 40%; } }\n@media (max-width: 767.98px) {\n  .navigation-bar {\n    left: 0; }\n    .navigation-bar ul {\n      display: none; }\n    .navigation-bar .navbar-brand {\n      width: 100%; } }\n"
+module.exports = "/**** fonts ****/\n/**** colcor ****/\n/**** z-index ******/\n/**** navbar ****/\n/**** sidebar ****/\n/** other **/\n/***** custom scrollbar webkit browser (not supported in firefox) ****/\n/** hover bg color **/\n.navigation-bar {\n  position: fixed;\n  top: 0;\n  right: 0;\n  padding: 0 1rem;\n  z-index: 1009;\n  height: 50px;\n  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);\n  background-color: #fff; }\n.navigation-bar.hidden {\n    top: -50px; }\n.navigation-bar ul {\n    display: flex;\n    margin: 0;\n    padding: 0;\n    align-items: center; }\n.navigation-bar ul li {\n      display: flex;\n      padding: 0.5em; }\n.navigation-bar .navbar-brand {\n    display: none;\n    text-align: center; }\n/* navbar burger button */\n.nav-toggle-btn {\n  display: none;\n  width: 2.2rem;\n  padding: 1rem 0;\n  position: absolute;\n  z-index: 10; }\n.nav-toggle-btn span {\n    width: 100%;\n    height: 2px;\n    position: absolute;\n    background: #000;\n    -webkit-transform: rotate(0deg);\n            transform: rotate(0deg);\n    transition: .25s ease-in-out; }\n.nav-toggle-btn span:nth-child(1) {\n      top: 5px;\n      -webkit-transform-origin: left center;\n              transform-origin: left center; }\n.nav-toggle-btn span:nth-child(2) {\n      top: 15px;\n      -webkit-transform-origin: left center;\n              transform-origin: left center; }\n.nav-toggle-btn span:nth-child(3) {\n      top: 25px;\n      -webkit-transform-origin: left center;\n              transform-origin: left center; }\n/* navbar burger button animation*/\n.nav-toggle-btn.open span:nth-child(1) {\n  -webkit-transform: rotate(45deg);\n          transform: rotate(45deg);\n  top: 2px;\n  left: 4px; }\n.nav-toggle-btn.open span:nth-child(2) {\n  width: 0%;\n  opacity: 0; }\n.nav-toggle-btn.open span:nth-child(3) {\n  -webkit-transform: rotate(-45deg);\n          transform: rotate(-45deg);\n  top: 27px;\n  left: 4px; }\n@media (max-width: 1199.98px) {\n  .navigation-bar {\n    left: 220px; } }\n@media (max-width: 991.98px) {\n  #minimizeSidebar {\n    display: none; }\n  .nav-toggle-btn {\n    display: inline-block; }\n  .navigation-bar {\n    left: 62px; }\n    .navigation-bar:not(.sidebar-hidden) {\n      left: 0; }\n    .navigation-bar ul.left-ul {\n      display: none; }\n    .navigation-bar .navbar-brand {\n      display: block;\n      width: 40%; } }\n@media (max-width: 767.98px) {\n  .navigation-bar {\n    left: 0; }\n    .navigation-bar ul {\n      display: none; }\n    .navigation-bar .navbar-brand {\n      width: 100%; } }\n"
 
 /***/ }),
 
@@ -1094,6 +1103,9 @@ var NavbarComponent = /** @class */ (function () {
             }
             this.previousScroll = currentScroll;
         }
+    };
+    NavbarComponent.prototype.navbarClick = function () {
+        console.log("aaa");
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"])('window:scroll', ['$event']),

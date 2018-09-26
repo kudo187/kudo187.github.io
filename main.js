@@ -331,10 +331,6 @@ var map = {
 		"./src/app/dashboard/dashboard.module.ts",
 		"calendar-calendar-module~dashboard-dashboard-module",
 		"dashboard-dashboard-module"
-	],
-	"./pages/pages.module": [
-		"./src/app/pages/pages.module.ts",
-		"pages-pages-module"
 	]
 };
 function webpackAsyncContext(req) {
@@ -377,12 +373,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _client_client_auth_guard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./client/client-auth.guard */ "./src/app/client/client-auth.guard.ts");
 /* harmony import */ var _client_login_login_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./client/login/login.component */ "./src/app/client/login/login.component.ts");
 /* harmony import */ var _client_register_register_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./client/register/register.component */ "./src/app/client/register/register.component.ts");
+/* harmony import */ var _login_admin_login_admin_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./login-admin/login-admin.component */ "./src/app/login-admin/login-admin.component.ts");
+/* harmony import */ var _auth_admin_admin_auth_guard__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./auth-admin/admin-auth.guard */ "./src/app/auth-admin/admin-auth.guard.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -404,8 +404,8 @@ var routes = [
         loadChildren: './client/manage-profile/manage-profile.module#ManageProfileModule',
         canActivate: [_client_client_auth_guard__WEBPACK_IMPORTED_MODULE_5__["ClientAuthGuard"]]
     },
-    { path: 'admin', loadChildren: './dashboard/dashboard.module#DashboardModule' },
-    { path: 'admin-login', loadChildren: './pages/pages.module#PagesModule' },
+    { path: 'admin', loadChildren: './dashboard/dashboard.module#DashboardModule', canActivate: [_auth_admin_admin_auth_guard__WEBPACK_IMPORTED_MODULE_9__["AdminAuthGuard"]] },
+    { path: 'admin-login', component: _login_admin_login_admin_component__WEBPACK_IMPORTED_MODULE_8__["LoginAdminComponent"] },
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: '**', component: _pages_not_found_not_found_component__WEBPACK_IMPORTED_MODULE_2__["NotFoundComponent"] }
 ];
@@ -483,7 +483,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! .//app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
 /* harmony import */ var _pages_not_found_not_found_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/not-found/not-found.component */ "./src/app/pages/not-found/not-found.component.ts");
 /* harmony import */ var _client_header_header_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./client/header/header.component */ "./src/app/client/header/header.component.ts");
@@ -499,6 +499,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _client_login_login_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./client/login/login.component */ "./src/app/client/login/login.component.ts");
 /* harmony import */ var _client_register_register_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./client/register/register.component */ "./src/app/client/register/register.component.ts");
+/* harmony import */ var _login_admin_login_admin_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./login-admin/login-admin.component */ "./src/app/login-admin/login-admin.component.ts");
+/* harmony import */ var _auth_admin_admin_auth_guard__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./auth-admin/admin-auth.guard */ "./src/app/auth-admin/admin-auth.guard.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -524,6 +526,8 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -540,6 +544,7 @@ var AppModule = /** @class */ (function () {
                 _client_manage_profile_manage_profile_component__WEBPACK_IMPORTED_MODULE_13__["ManageProfileComponent"],
                 _client_login_login_component__WEBPACK_IMPORTED_MODULE_16__["LoginComponent"],
                 _client_register_register_component__WEBPACK_IMPORTED_MODULE_17__["RegisterComponent"],
+                _login_admin_login_admin_component__WEBPACK_IMPORTED_MODULE_18__["LoginAdminComponent"],
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -550,11 +555,109 @@ var AppModule = /** @class */ (function () {
                 _angular_forms__WEBPACK_IMPORTED_MODULE_15__["FormsModule"]
                 // NotificationsModule,
             ],
-            providers: [_client_client_auth_guard__WEBPACK_IMPORTED_MODULE_14__["ClientAuthGuard"]],
+            providers: [_client_client_auth_guard__WEBPACK_IMPORTED_MODULE_14__["ClientAuthGuard"], _auth_admin_admin_auth_guard__WEBPACK_IMPORTED_MODULE_19__["AdminAuthGuard"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth-admin/admin-auth.guard.ts":
+/*!************************************************!*\
+  !*** ./src/app/auth-admin/admin-auth.guard.ts ***!
+  \************************************************/
+/*! exports provided: AdminAuthGuard */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminAuthGuard", function() { return AdminAuthGuard; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _auth_service_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./auth-service.service */ "./src/app/auth-admin/auth-service.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var AdminAuthGuard = /** @class */ (function () {
+    function AdminAuthGuard(auth, router) {
+        this.auth = auth;
+        this.router = router;
+    }
+    AdminAuthGuard.prototype.canActivate = function (next, state) {
+        if (this.auth.isLoggedIn) {
+            return true;
+        }
+        this.router.navigate(['/admin-login']);
+        return false;
+    };
+    AdminAuthGuard = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [_auth_service_service__WEBPACK_IMPORTED_MODULE_2__["AuthServiceService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
+    ], AdminAuthGuard);
+    return AdminAuthGuard;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth-admin/auth-service.service.ts":
+/*!****************************************************!*\
+  !*** ./src/app/auth-admin/auth-service.service.ts ***!
+  \****************************************************/
+/*! exports provided: AuthServiceService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthServiceService", function() { return AuthServiceService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var AuthServiceService = /** @class */ (function () {
+    function AuthServiceService() {
+        this.isLoggedinStatus = false;
+    }
+    AuthServiceService.prototype.setLoggedIn = function (value) {
+        this.isLoggedinStatus = value;
+    };
+    Object.defineProperty(AuthServiceService.prototype, "isLoggedIn", {
+        get: function () {
+            return this.isLoggedinStatus;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    AuthServiceService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [])
+    ], AuthServiceService);
+    return AuthServiceService;
 }());
 
 
@@ -678,7 +781,7 @@ var FooterComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<header class=\"header trans_300\">\r\n    <!-- Main Navigation -->\r\n    <div class=\"main_nav_container\">\r\n        <div class=\"container\">\r\n            <div class=\"row\">\r\n                <div class=\"col-lg-12 text-right\">\r\n                    <div class=\"logo_container\">\r\n                        <a href=\"/\">Change\r\n                            <span>Card</span>\r\n                        </a>\r\n                    </div>\r\n                    <nav class=\"navbar_content_menu\">\r\n                        <ul class=\"navbar_menu\">\r\n                            <li>\r\n                                <a routerLink=\"/\">trang chủ</a>\r\n                            </li>\r\n                            <li>\r\n                                <a routerLink=\"contact\">liên hệ</a>\r\n                            </li>\r\n                            <li *ngIf=\"isLoggin\">\r\n                                <button class=\"chip  row\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\r\n                                    <div class=\"col-md-3\">\r\n                                        <img class=\"img-responsive\" src=\"https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg\" alt=\"Contact Person\">\r\n                                    </div>\r\n                                    <div class=\"col-md-9\">\r\n                                        <span> {{username}}</span>\r\n                                        <br>Số dư:\r\n                                        <span class=\"ColorDo\"> {{surplus}} Gold</span>\r\n                                    </div>\r\n                                </button>\r\n                                <div class=\"dropdown-menu text-manage-profile\">\r\n                                    <a class=\"dropdown-item drprofile\" routerLink=\"/manage-profile\">\r\n                                        <i class=\"fas fa-user mr-2\"></i> Thông tin cá nhân</a>\r\n                                    <a class=\"dropdown-item drprofile\" routerLink=\"/manage-profile/change-password\">\r\n                                        <i class=\"fas fa-key mr-2\"></i>Đổi mật khẩu</a>\r\n                                    <a class=\"dropdown-item drprofile\" (click)=\"logOutUser()\">\r\n                                        <i class=\"fas fa-sign-out-alt mr-2\"></i> Log out</a>\r\n                                </div>\r\n                            </li>\r\n                            <li *ngIf=\"!isLoggin\" class=\"account\">\r\n                                <a>\r\n                                    Cá nhân\r\n                                    <i class=\"fa fa-angle-down\"></i>\r\n                                </a>\r\n                                <ul class=\"account_selection\">\r\n                                    <li>\r\n                                        <a routerLink=\"/login\" (click)=\"isLogin()\">\r\n                                            <i class=\"fa fa-sign-in\" aria-hidden=\"true\"></i>Đăng nhập</a>\r\n                                    </li>\r\n                                    <li>\r\n                                        <a routerLink=\"/register\" (click)=\"isLogin()\">\r\n                                            <i class=\"fa fa-user-plus\" aria-hidden=\"true\"></i>Đăng ký</a>\r\n                                    </li>\r\n                                </ul>\r\n                            </li>\r\n                        </ul>\r\n                        <!-- <ul class=\"navbar_user\">\r\n                              <li><a href=\"#\"><i class=\"fa fa-search\" aria-hidden=\"true\"></i></a></li>\r\n                              <li><a href=\"#\"><i class=\"fa fa-user\" aria-hidden=\"true\"></i></a></li>\r\n                              <li class=\"checkout\">\r\n                                  <a href=\"#\">\r\n                                      <i class=\"fa fa-shopping-cart\" aria-hidden=\"true\"></i>\r\n                                      <span id=\"checkout_items\" class=\"checkout_items\">2</span>\r\n                                  </a>\r\n                              </li>\r\n                          </ul> -->\r\n                        <div class=\"hamburger_container\">\r\n                            <i class=\"fa fa-bars\" aria-hidden=\"true\"></i>\r\n                        </div>\r\n                    </nav>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</header>\r\n<div class=\"fs_menu_overlay\"></div>\r\n<div class=\"hamburger_menu\">\r\n    <div class=\"hamburger_close\">\r\n        <i class=\"fa fa-times\" aria-hidden=\"true\"></i>\r\n    </div>\r\n    <div class=\"hamburger_menu_content text-right\">\r\n        <ul class=\"menu_top_nav\">\r\n            <li *ngIf=\"isLoggin\" class=\"menu_item has-children text-center\">\r\n                <button class=\"chip row\" type=\"button\">\r\n                    <div class=\"col-md-3\">\r\n                        <img class=\"img-responsive\" src=\"https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg\" alt=\"Contact Person\">\r\n                    </div>\r\n                    <div class=\"col-md-9\">\r\n                        <span> {{username}}</span>\r\n                        <br>Số dư:\r\n                        <span class=\"ColorDo\"> {{surplus}} Gold</span>\r\n                    </div>\r\n                </button>\r\n                <ul class=\"menu_selection text-manage-profile\">\r\n                    <li>\r\n                        <a routerLink=\"/manage-profile\">\r\n                            <i class=\"fas fa-user mr-2\"></i> Thông tin cá nhân</a>\r\n                    </li>\r\n                    <li>\r\n                        <a  routerLink=\"/manage-profile/change-password\">\r\n                            <i class=\"fas fa-key mr-2\"></i>Đổi mật khẩu</a>\r\n                    </li>\r\n                    <li>\r\n                        <a (click)=\"logOutUser()\">\r\n                            <i class=\"fas fa-sign-out-alt mr-2\"></i> Log out</a>\r\n                    </li>\r\n                </ul>\r\n            </li>\r\n            <li *ngIf=\"!isLoggin\" class=\"menu_item has-children\">\r\n                <a>\r\n                    cá nhân\r\n                    <i class=\"fa fa-angle-down\"></i>\r\n                </a>\r\n                <ul class=\"menu_selection\">\r\n                    <li>\r\n                        <a routerLink=\"/login\" (click)=\"isLogin()\">\r\n                            <i class=\"fa fa-sign-in mr-2 ml-3\" aria-hidden=\"true\"></i>Đăng nhập</a>\r\n                    </li>\r\n                    <li>\r\n                        <a routerLink=\"/register\" (click)=\"isLogin()\">\r\n                            <i class=\"fa fa-user-plus mr-2 ml-3\" aria-hidden=\"true\"></i>Đăng ký</a>\r\n                    </li>\r\n                </ul>\r\n            </li>\r\n            <li class=\"menu_item\">\r\n                <a routerLink=\"/\">Trang chủ</a>\r\n            </li>\r\n            <li class=\"menu_item\">\r\n                <a routerLink=\"/detail\">liên hệ</a>\r\n            </li>\r\n        </ul>\r\n    </div>\r\n</div>\r\n\r\n<!-- FIXED SUPPORT -->\r\n<div id=\"fixedSupport\">\r\n    <ul class=\"text-uppercase text-center\">\r\n        <li *ngIf=\"!isLoggin\">\r\n            <a routerLink=\"{{showLogin?'/register':'/login'}}\" (click)=\"isLogin()\" class=\"item active\">\r\n                <i class=\"sprite register ib \"></i>\r\n                <span class=\"lbl\">{{showLogin?'Đăng ký mới':'Đăng nhập'}}</span>\r\n            </a>\r\n        </li>\r\n        <li>\r\n            <a routerLink=\"#\" class=\"item\">\r\n                <i class=\"sprite recharge ib\"></i>\r\n                <span class=\"lbl\">Nạp tiền</span>\r\n            </a>\r\n        </li>\r\n        <li>\r\n            <a routerLink=\"skype:hotro_card2?chat\" class=\"item\" title=\"Skype\" rel=\"nofollow\">\r\n                <i class=\"sprite support ib\"></i>\r\n                <span class=\"lbl\">Hỗ trợ</span>\r\n            </a>\r\n        </li>\r\n        <li>\r\n            <a routerLink=\"ymsgr:sendim?hotrogate\" class=\"item\" title=\"Yahoo!\" rel=\"nofollow\">\r\n                <i class=\"sprite yahoo ib\"></i>\r\n                <span class=\"lbl\">Hỗ trợ</span>\r\n            </a>\r\n        </li>\r\n        <li>\r\n            <a routerLink=\"mailto:nvkhoa@gmail.com\" class=\"item\">\r\n                <i class=\"sprite feedback ib\"></i>\r\n                <span class=\"lbl\">Góp ý</span>\r\n            </a>\r\n        </li>\r\n    </ul>\r\n</div>\r\n\r\n<!-- Modal login -->\r\n\r\n<!-- <div class=\"modal fade\" id=\"modalLoginForm\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">\r\n    <div class=\"modal-dialog\" role=\"document\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header text-center\">\r\n                <h4 class=\"modal-title w-100 font-weight-bold\">Sign in</h4>\r\n                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n                    <span aria-hidden=\"true\">&times;</span>\r\n                </button>\r\n            </div>\r\n            <form #formSigninClient=\"ngForm\" (ngSubmit)=\"onLoggedin(formSigninClient.value)\" >\r\n            <div class=\"modal-body mx-3\"> -->\r\n<!-- <label for=\"email\">Email:</label> -->\r\n<!-- <div class=\"md-form mb-5\">\r\n                    <i class=\"fa fa-envelope prefix grey-text\"></i>\r\n                    <input type=\"text\" #usernameClient=\"ngModel\" ngModel name =\"usernameClient\" id=\"defaultForm-email\" placeholder=\"Your username\" class=\"form-control validate\"> -->\r\n<!-- <label data-error=\"wrong\" data-success=\"right\" for=\"defaultForm-email\">Your email</label> -->\r\n<!-- </div> -->\r\n<!-- <label for=\"email\">Password:</label>       -->\r\n<!-- <div class=\"md-form mb-4\">\r\n                                        \r\n                    <i class=\"fa fa-lock prefix grey-text\"></i>\r\n                    <input type=\"password\" #passwordClient=\"ngModel\" ngModel name = \"passwordClient\" id=\"defaultForm-pass\" class=\"form-control validate\" placeholder=\"Your password\"> -->\r\n<!-- <label data-error=\"wrong\" data-success=\"right\" for=\"defaultForm-pass\">Your password</label> -->\r\n<!-- </div>\r\n  \r\n            </div>\r\n            <div class=\"modal-footer d-flex justify-content-center\">\r\n                <button class=\"btn btn-default\">Login</button>\r\n            </div>\r\n            </form>\r\n        </div>\r\n    </div>\r\n  </div> -->\r\n\r\n\r\n<!-- Modal sign up -->\r\n<!-- <div class=\"modal fade\" id=\"modalRegisterForm\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">\r\n    <div class=\"modal-dialog\" role=\"document\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header text-center\">\r\n                <h4 class=\"modal-title w-100 font-weight-bold\">Sign up</h4>\r\n                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n                    <span aria-hidden=\"true\">&times;</span>\r\n                </button>\r\n            </div>\r\n            <div class=\"modal-body mx-3\">\r\n                <div class=\"md-form mb-5\">\r\n                    <i class=\"fa fa-user prefix grey-text\"></i>\r\n                    <input type=\"text\" id=\"orangeForm-name\" class=\"form-control validate\" placeholder=\"Your name\"> -->\r\n<!-- <label data-error=\"wrong\" data-success=\"right\" for=\"orangeForm-name\">Your name</label> -->\r\n<!-- </div>\r\n                <div class=\"md-form mb-5\">\r\n                    <i class=\"fa fa-envelope prefix grey-text\"></i>\r\n                    <input type=\"email\" id=\"orangeForm-email\" class=\"form-control validate\" placeholder=\"Your email\"> -->\r\n<!-- <label data-error=\"wrong\" data-success=\"right\" for=\"orangeForm-email\">Your email</label> -->\r\n<!-- </div>\r\n\r\n                <div class=\"md-form mb-4\">\r\n                    <i class=\"fa fa-lock prefix grey-text\"></i>\r\n                    <input type=\"password\" id=\"orangeForm-pass\" class=\"form-control validate\" placeholder=\"Your password\"> -->\r\n<!-- <label data-error=\"wrong\" data-success=\"right\" for=\"orangeForm-pass\">Your password</label> -->\r\n<!-- </div>\r\n\r\n            </div>\r\n            <div class=\"modal-footer d-flex justify-content-center\">\r\n                <button class=\"btn btn-deep-orange\">Sign up</button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div> -->"
+module.exports = "<header class=\"header trans_300\">\r\n    <!-- Main Navigation -->\r\n    <div class=\"main_nav_container\">\r\n        <div class=\"container\">\r\n            <div class=\"row\">\r\n                <div class=\"col-lg-12 text-right\">\r\n                    <div class=\"logo_container\">\r\n                        <a href=\"/\">Change\r\n                            <span>Card</span>\r\n                        </a>\r\n                    </div>\r\n                    <nav class=\"navbar_content_menu\">\r\n                        <ul class=\"navbar_menu\">\r\n                            <li>\r\n                                <a routerLink=\"/\">trang chủ</a>\r\n                            </li>\r\n                            <li>\r\n                                <a routerLink=\"contact\">liên hệ</a>\r\n                            </li>\r\n                            <li *ngIf=\"isLoggin\">\r\n                                <button class=\"chip  row\" type=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\r\n                                    <div class=\"col-md-3\">\r\n                                        <img class=\"img-responsive\" src=\"https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg\" alt=\"Contact Person\">\r\n                                    </div>\r\n                                    <div class=\"col-md-9\">\r\n                                        <span> {{username}}</span>\r\n                                        <br>Số dư:\r\n                                        <span class=\"ColorDo\"> {{surplus}} Gold</span>\r\n                                    </div>\r\n                                </button>\r\n                                <div class=\"dropdown-menu text-manage-profile\">\r\n                                    <a class=\"dropdown-item drprofile\" routerLink=\"/manage-profile\">\r\n                                        <i class=\"fa fa-user mr-2\"></i> Thông tin cá nhân</a>\r\n                                    <a class=\"dropdown-item drprofile\" routerLink=\"/manage-profile/change-password\">\r\n                                        <i class=\"fa fa-key mr-2\"></i>Đổi mật khẩu</a>\r\n                                    <a class=\"dropdown-item drprofile\" (click)=\"logOutUser()\">\r\n                                        <i class=\"fa fa-sign-out mr-2\"></i> Log out</a>\r\n                                </div>\r\n                            </li>\r\n                            <li *ngIf=\"!isLoggin\" class=\"account\">\r\n                                <a>\r\n                                    Cá nhân\r\n                                    <i class=\"fa fa-angle-down\"></i>\r\n                                </a>\r\n                                <ul class=\"account_selection\">\r\n                                    <li>\r\n                                        <a routerLink=\"/login\" (click)=\"isLogin()\">\r\n                                            <i class=\"fa fa-sign-in\" aria-hidden=\"true\"></i>Đăng nhập</a>\r\n                                    </li>\r\n                                    <li>\r\n                                        <a routerLink=\"/register\" (click)=\"isLogin()\">\r\n                                            <i class=\"fa fa-user-plus\" aria-hidden=\"true\"></i>Đăng ký</a>\r\n                                    </li>\r\n                                    <li>\r\n                                        <a routerLink=\"/register\" >\r\n                                            <i class=\"zmdi zmdi-arrow-right\"></i>Go admin</a>\r\n                                    </li>\r\n                                </ul>\r\n                            </li>\r\n                        </ul>\r\n                        <!-- <ul class=\"navbar_user\">\r\n                              <li><a href=\"#\"><i class=\"fa fa-search\" aria-hidden=\"true\"></i></a></li>\r\n                              <li><a href=\"#\"><i class=\"fa fa-user\" aria-hidden=\"true\"></i></a></li>\r\n                              <li class=\"checkout\">\r\n                                  <a href=\"#\">\r\n                                      <i class=\"fa fa-shopping-cart\" aria-hidden=\"true\"></i>\r\n                                      <span id=\"checkout_items\" class=\"checkout_items\">2</span>\r\n                                  </a>\r\n                              </li>\r\n                          </ul> -->\r\n                        <div class=\"hamburger_container\">\r\n                            <i class=\"fa fa-bars\" aria-hidden=\"true\"></i>\r\n                        </div>\r\n                    </nav>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</header>\r\n<div class=\"fs_menu_overlay\"></div>\r\n<div class=\"hamburger_menu\">\r\n    <div class=\"hamburger_close\">\r\n        <i class=\"fa fa-times\" aria-hidden=\"true\"></i>\r\n    </div>\r\n    <div class=\"hamburger_menu_content text-right\">\r\n        <ul class=\"menu_top_nav\">\r\n            <li *ngIf=\"isLoggin\" class=\"menu_item has-children text-center\">\r\n                <button class=\"chip row\" type=\"button\">\r\n                    <div class=\"col-md-3\">\r\n                        <img class=\"img-responsive\" src=\"https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg\" alt=\"Contact Person\">\r\n                    </div>\r\n                    <div class=\"col-md-9\">\r\n                        <span> {{username}}</span>\r\n                        <br>Số dư:\r\n                        <span class=\"ColorDo\"> {{surplus}} Gold</span>\r\n                    </div>\r\n                </button>\r\n                <ul class=\"menu_selection text-manage-profile\">\r\n                    <li>\r\n                        <a routerLink=\"/manage-profile\">\r\n                            <i class=\"fa fa-user mr-2\"></i> Thông tin cá nhân</a>\r\n                    </li>\r\n                    <li>\r\n                        <a  routerLink=\"/manage-profile/change-password\">\r\n                            <i class=\"fa fa-key mr-2\"></i>Đổi mật khẩu</a>\r\n                    </li>\r\n                    <li>\r\n                        <a (click)=\"logOutUser()\">\r\n                            <i class=\"fa fa-sign-out mr-2\"></i> Log out</a>\r\n                    </li>\r\n                </ul>\r\n            </li>\r\n            <li *ngIf=\"!isLoggin\" class=\"menu_item has-children\">\r\n                <a>\r\n                    cá nhân\r\n                    <i class=\"fa fa-angle-down\"></i>\r\n                </a>\r\n                <ul class=\"menu_selection\">\r\n                    <li>\r\n                        <a routerLink=\"/login\" (click)=\"isLogin()\">\r\n                            <i class=\"fa fa-sign-in mr-2 ml-3\" aria-hidden=\"true\"></i>Đăng nhập</a>\r\n                    </li>\r\n                    <li>\r\n                        <a routerLink=\"/register\" (click)=\"isLogin()\">\r\n                            <i class=\"fa fa-user-plus mr-2 ml-3\" aria-hidden=\"true\"></i>Đăng ký</a>\r\n                    </li>\r\n                    <li>\r\n                        <a routerLink=\"/admin\">\r\n                            <i class=\"fa fa-user-plus mr-2 ml-3\" aria-hidden=\"true\"></i>Go Admin</a>\r\n                    </li>\r\n                </ul>\r\n            </li>\r\n            <li class=\"menu_item\">\r\n                <a routerLink=\"/\">Trang chủ</a>\r\n            </li>\r\n            <li class=\"menu_item\">\r\n                <a routerLink=\"/detail\">liên hệ</a>\r\n            </li>\r\n        </ul>\r\n    </div>\r\n</div>\r\n\r\n<!-- FIXED SUPPORT -->\r\n<div id=\"fixedSupport\">\r\n    <ul class=\"text-uppercase text-center\">\r\n        <li *ngIf=\"!isLoggin\">\r\n            <a routerLink=\"{{showLogin?'/register':'/login'}}\" (click)=\"isLogin()\" class=\"item active\">\r\n                <i class=\"sprite register ib \"></i>\r\n                <span class=\"lbl profile\">{{showLogin?'Đăng ký mới':'Đăng nhập'}}</span>\r\n            </a>\r\n        </li>\r\n        <li>\r\n            <a routerLink=\"#\" class=\"item\">\r\n                <i class=\"sprite recharge ib\"></i>\r\n                <span class=\"lbl\">Nạp tiền</span>\r\n            </a>\r\n        </li>\r\n        <li>\r\n            <a routerLink=\"skype:hotro_card2?chat\" class=\"item\" title=\"Skype\" rel=\"nofollow\">\r\n                <i class=\"sprite support ib\"></i>\r\n                <span class=\"lbl\">Hỗ trợ</span>\r\n            </a>\r\n        </li>\r\n        <li>\r\n            <a routerLink=\"ymsgr:sendim?hotrogate\" class=\"item\" title=\"Yahoo!\" rel=\"nofollow\">\r\n                <i class=\"sprite yahoo ib\"></i>\r\n                <span class=\"lbl\">Hỗ trợ</span>\r\n            </a>\r\n        </li>\r\n        <li>\r\n            <a routerLink=\"mailto:nvkhoa@gmail.com\" class=\"item\">\r\n                <i class=\"sprite feedback ib\"></i>\r\n                <span class=\"lbl\">Góp ý</span>\r\n            </a>\r\n        </li>\r\n    </ul>\r\n</div>\r\n\r\n<!-- Modal login -->\r\n\r\n<!-- <div class=\"modal fade\" id=\"modalLoginForm\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">\r\n    <div class=\"modal-dialog\" role=\"document\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header text-center\">\r\n                <h4 class=\"modal-title w-100 font-weight-bold\">Sign in</h4>\r\n                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n                    <span aria-hidden=\"true\">&times;</span>\r\n                </button>\r\n            </div>\r\n            <form #formSigninClient=\"ngForm\" (ngSubmit)=\"onLoggedin(formSigninClient.value)\" >\r\n            <div class=\"modal-body mx-3\"> -->\r\n<!-- <label for=\"email\">Email:</label> -->\r\n<!-- <div class=\"md-form mb-5\">\r\n                    <i class=\"fa fa-envelope prefix grey-text\"></i>\r\n                    <input type=\"text\" #usernameClient=\"ngModel\" ngModel name =\"usernameClient\" id=\"defaultForm-email\" placeholder=\"Your username\" class=\"form-control validate\"> -->\r\n<!-- <label data-error=\"wrong\" data-success=\"right\" for=\"defaultForm-email\">Your email</label> -->\r\n<!-- </div> -->\r\n<!-- <label for=\"email\">Password:</label>       -->\r\n<!-- <div class=\"md-form mb-4\">\r\n                                        \r\n                    <i class=\"fa fa-lock prefix grey-text\"></i>\r\n                    <input type=\"password\" #passwordClient=\"ngModel\" ngModel name = \"passwordClient\" id=\"defaultForm-pass\" class=\"form-control validate\" placeholder=\"Your password\"> -->\r\n<!-- <label data-error=\"wrong\" data-success=\"right\" for=\"defaultForm-pass\">Your password</label> -->\r\n<!-- </div>\r\n  \r\n            </div>\r\n            <div class=\"modal-footer d-flex justify-content-center\">\r\n                <button class=\"btn btn-default\">Login</button>\r\n            </div>\r\n            </form>\r\n        </div>\r\n    </div>\r\n  </div> -->\r\n\r\n\r\n<!-- Modal sign up -->\r\n<!-- <div class=\"modal fade\" id=\"modalRegisterForm\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">\r\n    <div class=\"modal-dialog\" role=\"document\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header text-center\">\r\n                <h4 class=\"modal-title w-100 font-weight-bold\">Sign up</h4>\r\n                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n                    <span aria-hidden=\"true\">&times;</span>\r\n                </button>\r\n            </div>\r\n            <div class=\"modal-body mx-3\">\r\n                <div class=\"md-form mb-5\">\r\n                    <i class=\"fa fa-user prefix grey-text\"></i>\r\n                    <input type=\"text\" id=\"orangeForm-name\" class=\"form-control validate\" placeholder=\"Your name\"> -->\r\n<!-- <label data-error=\"wrong\" data-success=\"right\" for=\"orangeForm-name\">Your name</label> -->\r\n<!-- </div>\r\n                <div class=\"md-form mb-5\">\r\n                    <i class=\"fa fa-envelope prefix grey-text\"></i>\r\n                    <input type=\"email\" id=\"orangeForm-email\" class=\"form-control validate\" placeholder=\"Your email\"> -->\r\n<!-- <label data-error=\"wrong\" data-success=\"right\" for=\"orangeForm-email\">Your email</label> -->\r\n<!-- </div>\r\n\r\n                <div class=\"md-form mb-4\">\r\n                    <i class=\"fa fa-lock prefix grey-text\"></i>\r\n                    <input type=\"password\" id=\"orangeForm-pass\" class=\"form-control validate\" placeholder=\"Your password\"> -->\r\n<!-- <label data-error=\"wrong\" data-success=\"right\" for=\"orangeForm-pass\">Your password</label> -->\r\n<!-- </div>\r\n\r\n            </div>\r\n            <div class=\"modal-footer d-flex justify-content-center\">\r\n                <button class=\"btn btn-deep-orange\">Sign up</button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div> -->"
 
 /***/ }),
 
@@ -1185,7 +1288,7 @@ var ManageCardComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n<div class=\"container\" id=\"containerContent\">\n  <section class=\"HomeContent innerFloat\">\n    <div class=\"MainContent row\">\n      <div class=\"SideBarLeft col-md-3\">\n        <div id=\"cssmenu\">\n          <ul class=\"bgColor\">\n            <li class=\"tttk\">\n              <a routerLink=\"/manage-profile\">\n                <i class=\"spriteAccountInfo info ib\"></i>\n                <span style=\"border-color: rgba(255, 255, 255, 0.34902);\">Thông tin tài khoản</span>\n              </a>\n            </li>\n            <li>\n              <a routerLink=\"/manage-profile/transfers\" >\n                <i class=\"spriteAccountInfo transfer ib\"></i>\n                <span style=\"border-color: rgba(255, 255, 255, 0.34902);\">Chuyển GGold</span>\n              </a>\n            </li>\n            <li>\n                <a routerLink=\"/manage-profile/transaction-history\" >\n                  <i class=\"spriteAccountInfo transfer ib\"></i>\n                  <span style=\"border-color: rgba(255, 255, 255, 0.34902);\">Lịch sử giao dịch</span>\n                </a>\n              </li>\n            <li  class=\"has-sub ttmk\">\n              <a>\n                <i class=\"spriteAccountInfo security ib\"></i>\n                <span style=\"border-color: rgba(255, 255, 255, 0.34902);\">Bảo mật tài khoản</span>\n                <span class=\"holder\" style=\"border-color: rgba(255, 255, 255, 0.34902);\"></span>\n              </a>\n              <ul >\n                <!-- <li >\n                  <a href=\"/cau-hinh-mk/\">Cấu hình mật khẩu</a>\n                </li> -->\n                <li>\n                  <a routerLink=\"/manage-profile/change-password\">Đổi mật khẩu đăng nhập</a>\n                </li>\n                <!-- <li>\n                  <a routerLink=\"/doi-mk-giao-dich/\">Đổi mật khẩu giao dịch</a>\n                </li> -->\n                <li>\n                  <a routerLink=\"/cau-hinh-thong-bao-so-du/\">Thông báo số dư</a>\n                </li>\n              </ul>\n            </li>\n          </ul>\n        </div>\n        <!-- end cssmenu -->\n\n        <div class=\"support-left\">\n          <p>Chăm sóc khách hàng</p>\n          <p class=\"mobile\" style=\"font-size:18px;text-transform: lowercase;\">0965288463 - Ext 4</p>\n        </div>\n      </div>\n      <!-- end SideBarLeft -->\n      <div class=\"blockContent col-md-9\">\n        <router-outlet></router-outlet>\n      </div>\n      <!-- endn BlockContent -->\n    </div>\n  </section>\n</div>\n<!-- end container -->\n\n\n<app-footer></app-footer>"
+module.exports = "<app-header></app-header>\r\n<div class=\"container\" id=\"containerContent\">\r\n  <section class=\"HomeContent innerFloat\">\r\n    <div class=\"MainContent row\">\r\n      <div class=\"SideBarLeft col-md-3\">\r\n        <div id=\"cssmenu\">\r\n          <ul class=\"bgColor\">\r\n            <li class=\"tttk\">\r\n              <a routerLink=\"/manage-profile\">\r\n                <i class=\"spriteAccountInfo info ib\"></i>\r\n                <span style=\"border-color: rgba(255, 255, 255, 0.34902);\">Thông tin tài khoản</span>\r\n              </a>\r\n            </li>\r\n            <li>\r\n              <a routerLink=\"/manage-profile/transfers\" >\r\n                <i class=\"spriteAccountInfo transfer ib\"></i>\r\n                <span style=\"border-color: rgba(255, 255, 255, 0.34902);\">Chuyển GGold</span>\r\n              </a>\r\n            </li>\r\n            <li>\r\n                <a routerLink=\"/manage-profile/transaction-history\" >\r\n                  <i class=\"spriteAccountInfo transfer ib\"></i>\r\n                  <span style=\"border-color: rgba(255, 255, 255, 0.34902);\">Lịch sử giao dịch</span>\r\n                </a>\r\n              </li>\r\n            <li  class=\"has-sub ttmk\">\r\n              <a>\r\n                <i class=\"spriteAccountInfo security ib\"></i>\r\n                <span style=\"border-color: rgba(255, 255, 255, 0.34902);\">Bảo mật tài khoản</span>\r\n                <span class=\"holder\" style=\"border-color: rgba(255, 255, 255, 0.34902);\"></span>\r\n              </a>\r\n              <ul >\r\n                <!-- <li >\r\n                  <a href=\"/cau-hinh-mk/\">Cấu hình mật khẩu</a>\r\n                </li> -->\r\n                <li>\r\n                  <a routerLink=\"/manage-profile/change-password\">Đổi mật khẩu đăng nhập</a>\r\n                </li>\r\n                <!-- <li>\r\n                  <a routerLink=\"/doi-mk-giao-dich/\">Đổi mật khẩu giao dịch</a>\r\n                </li> -->\r\n                <li>\r\n                  <a routerLink=\"/cau-hinh-thong-bao-so-du/\">Thông báo số dư</a>\r\n                </li>\r\n              </ul>\r\n            </li>\r\n          </ul>\r\n        </div>\r\n        <!-- end cssmenu -->\r\n\r\n        <div class=\"support-left\">\r\n          <p>Chăm sóc khách hàng</p>\r\n          <p class=\"mobile\" style=\"font-size:18px;text-transform: lowercase;\">0965288463 - Ext 4</p>\r\n        </div>\r\n      </div>\r\n      <!-- end SideBarLeft -->\r\n      <div class=\"blockContent col-md-9\">\r\n        <router-outlet></router-outlet>\r\n      </div>\r\n      <!-- endn BlockContent -->\r\n    </div>\r\n  </section>\r\n</div>\r\n<!-- end container -->\r\n\r\n\r\n<app-footer></app-footer>"
 
 /***/ }),
 
@@ -1248,7 +1351,7 @@ var ManageProfileComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\r\n\r\n<div class=\"col-md-6 offset-md-3\" id=\"containerContent\">\r\n  <div class=\"text-center\">\r\n    <h1 class=\"text-danger signup-title w-100 font-weight-bold\">Đăng ký thành viên</h1>\r\n  </div>\r\n  <form #formRegister=\"ngForm\" (ngSubmit)=\"onSubMitRegister(formRegister)\"></form>\r\n  <div class=\" mx-3\">\r\n    <div class=\"alert alert-danger\" *ngIf=\"username.invalid && (username.dirty || username.touched)\" role=\"alert\">\r\n      Bạn chưa điền tên người dùng!!!\r\n    </div>\r\n    <div class=\"md-form mb-5\">\r\n      <i class=\"fa fa-user prefix grey-text\"></i>\r\n      <input type=\"text\" id=\"username\" name=\"username\" required #username=\"ngModel\" ngModel class=\"form-control validate\" placeholder=\"Nhập tên người dùng\">\r\n      <!-- <label data-error=\"wrong\" data-success=\"right\" for=\"orangeForm-name\">Your name</label> -->\r\n    </div>\r\n    <div class=\"alert alert-danger\" *ngIf=\"fullname.invalid && (fullname.dirty || fullname.touched)\" role=\"alert\">\r\n      Bạn chưa điền họ và tên!!!\r\n    </div>\r\n    <div class=\"md-form mb-5\">\r\n      <i class=\"fas fa-grin prefix grey-text\"></i>\r\n      <input type=\"text\" id=\"fullname\" name=\"fullname\" #fullname=\"ngModel\" ngModel class=\"form-control validate\" placeholder=\"Nhập tên đầy đủ\">\r\n      <!-- <label data-error=\"wrong\" data-success=\"right\" for=\"orangeForm-name\">Your name</label> -->\r\n    </div>\r\n    <div class=\"alert alert-danger\" *ngIf=\"phone.invalid && (phone.dirty || phone.touched)\" role=\"alert\">\r\n      Bạn chưa điền số điện thoại !!!\r\n    </div>\r\n    <div class=\"md-form mb-5\">\r\n      <i class=\"fa fa-phone prefix grey-text\"></i>\r\n      <input type=\"tel\" id=\"phone\" name=\"phone\" required #phone=\"ngModel\" ngModel class=\"form-control validate\" placeholder=\"Nhập tên số điện thoại\">\r\n      <!-- <label data-error=\"wrong\" data-success=\"right\" for=\"orangeForm-name\">Your name</label> -->\r\n    </div>\r\n    <div class=\"alert alert-danger\" *ngIf=\"email.invalid && (email.dirty || email.touched)\" role=\"alert\">\r\n      Bạn chưa điền email!!!\r\n    </div>\r\n    <div class=\"md-form mb-5\">\r\n      <i class=\"fa fa-envelope prefix grey-text\"></i>\r\n      <input type=\"email\" id=\"email\" name=\"email\" required #email=\"ngModel\" ngModel class=\"form-control validate\" placeholder=\"Nhập email\">\r\n      <!-- <label data-error=\"wrong\" data-success=\"right\" for=\"orangeForm-email\">Your email</label> -->\r\n    </div>\r\n    <div class=\"alert alert-danger\" *ngIf=\"pass.invalid && (pass.dirty || pass.touched)\" role=\"alert\">\r\n      Bạn chưa nhập mật khẩu!!!\r\n    </div>\r\n    <div class=\"md-form mb-4\">\r\n      <i class=\"fa fa-lock prefix grey-text\"></i>\r\n      <input type=\"password\" id=\"pass\" name=\"pass\" required #pass=\"ngModel\" ngModel class=\"form-control validate\" placeholder=\"Nhập mật khẩu\">\r\n      <!-- <label data-error=\"wrong\" data-success=\"right\" for=\"orangeForm-pass\">Your password</label> -->\r\n    </div>\r\n    <div class=\"alert alert-danger\" *ngIf=\"repass.invalid && (repass.dirty || repass.touched)\" role=\"alert\">\r\n      Bạn chưa nhập lại mật khẩu!!!\r\n    </div>\r\n    <div class=\"alert alert-danger\" *ngIf=\"pass.value != repass.value && (repass.dirty || repass.touched)\" role=\"alert\">\r\n      Mật khẩu vừa nhật không khớp!!!\r\n    </div>\r\n    <div class=\"md-form mb-4\">\r\n      <i class=\"fa fa-key prefix grey-text\"></i>\r\n      <input type=\"password\" id=\"re-pass\" name=\"repass\" #repass=\"ngModel\" ngModel required class=\"form-control validate\" placeholder=\"Nhập lại mật khẩu\">\r\n      <!-- <label data-error=\"wrong\" data-success=\"right\" for=\"orangeForm-pass\">Your password</label> -->\r\n    </div>\r\n\r\n  </div>\r\n  <div class=\"d-flex justify-content-center\">\r\n    <button class=\"btn btn-danger\" [disabled]=\"formRegister.invalid\">Đồng ý</button>\r\n  </div>\r\n</div>\r\n\r\n<app-footer></app-footer>"
+module.exports = "<app-header></app-header>\r\n\r\n<div class=\"col-md-6 offset-md-3\" id=\"containerContent\">\r\n  <div class=\"text-center\">\r\n    <h1 class=\"text-danger signup-title w-100 font-weight-bold\">Đăng ký thành viên</h1>\r\n  </div>\r\n  <form #formRegister=\"ngForm\" (ngSubmit)=\"onSubMitRegister(formRegister)\"></form>\r\n  <div class=\" mx-3\">\r\n    <div class=\"alert alert-danger\" *ngIf=\"username.invalid && (username.dirty || username.touched)\" role=\"alert\">\r\n      Bạn chưa điền tên người dùng!!!\r\n    </div>\r\n    <div class=\"md-form mb-5\">\r\n      <i class=\"fa fa-user prefix grey-text\"></i>\r\n      <input type=\"text\" id=\"username\" name=\"username\" required #username=\"ngModel\" ngModel class=\"form-control validate\" placeholder=\"Nhập tên người dùng\">\r\n      <!-- <label data-error=\"wrong\" data-success=\"right\" for=\"orangeForm-name\">Your name</label> -->\r\n    </div>\r\n    <div class=\"alert alert-danger\" *ngIf=\"fullname.invalid && (fullname.dirty || fullname.touched)\" role=\"alert\">\r\n      Bạn chưa điền họ và tên!!!\r\n    </div>\r\n    <div class=\"md-form mb-5\">\r\n      <i class=\"fa fa-info prefix grey-text\"></i>\r\n      <input type=\"text\" id=\"fullname\" name=\"fullname\" #fullname=\"ngModel\" ngModel class=\"form-control validate\" placeholder=\"Nhập tên đầy đủ\">\r\n      <!-- <label data-error=\"wrong\" data-success=\"right\" for=\"orangeForm-name\">Your name</label> -->\r\n    </div>\r\n    <div class=\"alert alert-danger\" *ngIf=\"phone.invalid && (phone.dirty || phone.touched)\" role=\"alert\">\r\n      Bạn chưa điền số điện thoại !!!\r\n    </div>\r\n    <div class=\"md-form mb-5\">\r\n      <i class=\"fa fa-phone prefix grey-text\"></i>\r\n      <input type=\"tel\" id=\"phone\" name=\"phone\" required #phone=\"ngModel\" ngModel class=\"form-control validate\" placeholder=\"Nhập tên số điện thoại\">\r\n      <!-- <label data-error=\"wrong\" data-success=\"right\" for=\"orangeForm-name\">Your name</label> -->\r\n    </div>\r\n    <div class=\"alert alert-danger\" *ngIf=\"email.invalid && (email.dirty || email.touched)\" role=\"alert\">\r\n      Bạn chưa điền email!!!\r\n    </div>\r\n    <div class=\"md-form mb-5\">\r\n      <i class=\"fa fa-envelope prefix grey-text\"></i>\r\n      <input type=\"email\" id=\"email\" name=\"email\" required #email=\"ngModel\" ngModel class=\"form-control validate\" placeholder=\"Nhập email\">\r\n      <!-- <label data-error=\"wrong\" data-success=\"right\" for=\"orangeForm-email\">Your email</label> -->\r\n    </div>\r\n    <div class=\"alert alert-danger\" *ngIf=\"pass.invalid && (pass.dirty || pass.touched)\" role=\"alert\">\r\n      Bạn chưa nhập mật khẩu!!!\r\n    </div>\r\n    <div class=\"md-form mb-4\">\r\n      <i class=\"fa fa-lock prefix grey-text\"></i>\r\n      <input type=\"password\" id=\"pass\" name=\"pass\" required #pass=\"ngModel\" ngModel class=\"form-control validate\" placeholder=\"Nhập mật khẩu\">\r\n      <!-- <label data-error=\"wrong\" data-success=\"right\" for=\"orangeForm-pass\">Your password</label> -->\r\n    </div>\r\n    <div class=\"alert alert-danger\" *ngIf=\"repass.invalid && (repass.dirty || repass.touched)\" role=\"alert\">\r\n      Bạn chưa nhập lại mật khẩu!!!\r\n    </div>\r\n    <div class=\"alert alert-danger\" *ngIf=\"pass.value != repass.value && (repass.dirty || repass.touched)\" role=\"alert\">\r\n      Mật khẩu vừa nhật không khớp!!!\r\n    </div>\r\n    <div class=\"md-form mb-4\">\r\n      <i class=\"fa fa-key prefix grey-text\"></i>\r\n      <input type=\"password\" id=\"re-pass\" name=\"repass\" #repass=\"ngModel\" ngModel required class=\"form-control validate\" placeholder=\"Nhập lại mật khẩu\">\r\n      <!-- <label data-error=\"wrong\" data-success=\"right\" for=\"orangeForm-pass\">Your password</label> -->\r\n    </div>\r\n\r\n  </div>\r\n  <div class=\"d-flex justify-content-center\">\r\n    <button class=\"btn btn-danger\" [disabled]=\"formRegister.invalid\">Đồng ý</button>\r\n  </div>\r\n</div>\r\n\r\n<app-footer></app-footer>"
 
 /***/ }),
 
@@ -1298,6 +1401,104 @@ var RegisterComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], RegisterComponent);
     return RegisterComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/login-admin/login-admin.component.html":
+/*!********************************************************!*\
+  !*** ./src/app/login-admin/login-admin.component.html ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"limiter\">\n  <div class=\"container-login100\" style=\"background-image: url('../../assets/client/images/bg-01.jpg');\">\n    <div class=\"wrap-login100\">\n      <form class=\"login100-form \" #loginAdmin = \"ngForm\" (ngSubmit) = \"onLoginAdmin(loginAdmin.value)\" >\n        <span class=\"login100-form-logo\">\n          <i class=\"zmdi zmdi-landscape\"></i>\n        </span>\n\n        <span class=\"login100-form-title pb-5 pt-4\">\n          Log in\n        </span>\n        <div class=\"alert alert-danger\" *ngIf=\"username.invalid && (username.dirty || username.touched)\" role=\"alert\">\n            Bạn chưa điền tên đăng nhập!!!\n      </div>\n      <div class=\"alert alert-danger\" *ngIf=\"userError\" role=\"alert\">\n          Tên đăng nhập chưa chính xác!!!\n    </div>\n        <div class=\"wrap-input100 \" >\n          <input class=\"input100\" type=\"text\" #username = \"ngModel\" required ngModel name=\"username\" placeholder=\"Username\">\n          <span class=\"focus-input100\" data-placeholder=\"&#xf207;\"></span>\n        </div>\n        <div class=\"alert alert-danger\" *ngIf=\"username.invalid && (username.dirty || username.touched)\" role=\"alert\">\n            Bạn chưa điền mật khẩu!!!\n      </div>\n        <div class=\"alert alert-danger\" *ngIf=\"passError\" role=\"alert\">\n            Mật khẩu không chính xác!!!\n      </div>\n        <div class=\"wrap-input100\">\n          <input class=\"input100\" type=\"password\" #pass = \"ngModel\" ngModel required name=\"pass\" placeholder=\"Password\">\n          <span class=\"focus-input100\" data-placeholder=\"&#xf191;\"></span>\n        </div>\n\n        <div class=\"contact100-form-checkbox\">\n          <input class=\"input-checkbox100\" id=\"ckb1\" type=\"checkbox\" name=\"remember-me\">\n          <label class=\"label-checkbox100\" for=\"ckb1\">\n            Remember me\n          </label>\n        </div>\n\n        <div class=\"container-login100-form-btn mb-5\">\n          <button [disabled] = \"loginAdmin.invalid\" class=\"login100-form-btn\">\n            Login\n          </button>\n        </div>\n\n        <!-- <div class=\"text-center pt-5\">\n          <a class=\"txt1\" href=\"#\">\n            Forgot Password?\n          </a>\n        </div> -->\n      </form>\n    </div>\n  </div>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/login-admin/login-admin.component.scss":
+/*!********************************************************!*\
+  !*** ./src/app/login-admin/login-admin.component.scss ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "::-webkit-input-placeholder {\n  font-size: 16px !important;\n  font-weight: 500;\n  color: #fff !important; }\n\n:-moz-placeholder {\n  font-size: 16px !important;\n  font-weight: 500;\n  color: #fff !important; }\n\n::-moz-placeholder {\n  font-size: 16px !important;\n  font-weight: 500;\n  color: #fff !important; }\n\n:-ms-input-placeholder {\n  font-size: 16px !important;\n  font-weight: 500;\n  color: #fff !important; }\n\n::input-placeholder {\n  font-size: 16px !important;\n  font-weight: 500;\n  color: #fff !important; }\n\ninput {\n  outline: none;\n  border: none; }\n\ntextarea {\n  outline: none;\n  border: none; }\n"
+
+/***/ }),
+
+/***/ "./src/app/login-admin/login-admin.component.ts":
+/*!******************************************************!*\
+  !*** ./src/app/login-admin/login-admin.component.ts ***!
+  \******************************************************/
+/*! exports provided: LoginAdminComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginAdminComponent", function() { return LoginAdminComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _node_modules_angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/@angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _auth_admin_auth_service_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../auth-admin/auth-service.service */ "./src/app/auth-admin/auth-service.service.ts");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
+/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_3__);
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var LoginAdminComponent = /** @class */ (function () {
+    function LoginAdminComponent(router, auth) {
+        this.router = router;
+        this.auth = auth;
+        this.userError = false;
+        this.passError = false;
+    }
+    LoginAdminComponent.prototype.ngOnInit = function () {
+    };
+    LoginAdminComponent.prototype.onLoginAdmin = function (formLogin) {
+        if (formLogin.username === "admin") {
+            this.userError = false;
+            if (formLogin.pass === "123") {
+                this.passError = false;
+                this.auth.setLoggedIn(true);
+                sessionStorage.setItem('cl-userNameAdmin', formLogin.username);
+                sessionStorage.setItem('cl-isLoggedInAdmin', 'true');
+                sweetalert2__WEBPACK_IMPORTED_MODULE_3___default()({
+                    type: 'success',
+                    title: 'Đăng nhập thành công',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                this.router.navigate(['/admin']);
+            }
+            else {
+                this.passError = true;
+            }
+        }
+        else {
+            this.userError = true;
+        }
+    };
+    LoginAdminComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-login-admin',
+            template: __webpack_require__(/*! ./login-admin.component.html */ "./src/app/login-admin/login-admin.component.html"),
+            styles: [__webpack_require__(/*! ./login-admin.component.scss */ "./src/app/login-admin/login-admin.component.scss")]
+        }),
+        __metadata("design:paramtypes", [_node_modules_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _auth_admin_auth_service_service__WEBPACK_IMPORTED_MODULE_2__["AuthServiceService"]])
+    ], LoginAdminComponent);
+    return LoginAdminComponent;
 }());
 
 
@@ -1502,7 +1703,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! E:\FPT\ChargingCard\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\KhoaNV8\Desktop\KhoaNV8\Team 3\Khoa_Git\ChargingCard\src\main.ts */"./src/main.ts");
 
 
 /***/ })
